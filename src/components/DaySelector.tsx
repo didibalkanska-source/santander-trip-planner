@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { tripDays } from '@/data/tripData';
-import { MapPin } from 'lucide-react';
 
 interface DaySelectorProps {
   selectedDay: number;
@@ -22,7 +21,7 @@ const DaySelector = ({ selectedDay, onSelectDay, showActive = true }: DaySelecto
             whileTap={{ scale: 0.95 }}
             layout
           >
-            <MapPin className="w-3 h-3" />
+            <img src="guggenheim-icon.svg" alt="" className="w-4 h-4 object-contain" />
             <span className="font-semibold">Ден {day.day + 1}</span>
             <span className="hidden sm:inline text-xs opacity-80">{day.dateFormatted}</span>
           </motion.button>
