@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Музей Гугенхайм Билбао</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:       hsl(16, 85%, 50%);
+      --primary-light: hsl(16, 85%, 96%);
+      --primary-dark:  hsl(16, 85%, 40%);
+      --accent:        hsl(200, 80%, 45%);
+      --accent-light:  hsl(200, 60%, 95%);
+      --sightseeing:   hsl(130, 50%, 40%);
+      --sight-light:   hsl(130, 40%, 95%);
+      --bg:            hsl(0, 0%, 98%);
+      --card:          hsl(0, 0%, 100%);
+      --border:        hsl(220, 13%, 91%);
+      --text:          hsl(220, 15%, 15%);
+      --muted:         hsl(220, 10%, 46%);
+      --radius:        0.75rem;
+      --shadow:        0 1px 3px hsl(220 15% 15% / 0.06), 0 1px 2px hsl(220 15% 15% / 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      padding: 1.5rem 1.25rem 1.25rem;
+    }
+    .header-inner { max-width: 680px; margin: 0 auto; }
+    .header-tag {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(255,255,255,.2); border-radius: 2rem;
+      padding: 0.2rem 0.6rem; margin-bottom: 0.625rem;
+    }
+    header h1 { font-size: 1.375rem; font-weight: 700; margin-bottom: 0.25rem; }
+    header p  { font-size: 0.8125rem; opacity: 0.85; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      margin: 1rem 1.25rem 0;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--primary); text-decoration: none;
+      background: var(--card); border: 1px solid var(--border);
+      padding: 0.35rem 0.875rem; border-radius: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .back-btn:hover { background: var(--primary-light); }
+
+    .content { max-width: 680px; margin: 0 auto; padding: 1.25rem 1.25rem 3rem; }
+
+    .cta-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--primary); color: #fff;
+      border-radius: var(--radius); padding: 0.875rem 1.25rem;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px hsl(16 85% 50% / 0.3);
+      transition: background .15s;
+    }
+    .cta-btn:hover { background: var(--primary-dark); }
+
+    .source-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.625rem 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.8rem; color: var(--accent);
+      text-decoration: none; box-shadow: var(--shadow);
+    }
+    .source-link:hover { background: var(--accent-light); }
+    .source-link span:first-child { flex: 1; }
+
+    .info-box {
+      background: var(--primary-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.875rem;
+      font-size: 0.8375rem;
+    }
+    .info-box strong { display: block; color: var(--primary-dark); margin-bottom: 0.2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .notice-box {
+      background: hsl(48, 100%, 97%);
+      border-left: 3px solid hsl(38, 92%, 50%);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.875rem;
+      font-size: 0.8375rem;
+      color: hsl(38, 60%, 25%);
+    }
+    .notice-box strong { display: block; margin-bottom: 0.2rem; }
+
+    h2 {
+      font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.07em; color: var(--muted);
+      margin: 1.5rem 0 0.625rem;
+      padding-bottom: 0.375rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 0.875rem 1rem;
+      margin-bottom: 0.625rem;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .card p   { font-size: 0.8375rem; color: hsl(220, 10%, 35%); }
+
+    .card-row { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .card-icon {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+    .icon-sight { background: var(--sight-light); }
+    .icon-info  { background: var(--primary-light); }
+    .icon-loc   { background: hsl(200, 60%, 95%); }
+
+    .badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      padding: 0.15rem 0.5rem; border-radius: 2rem;
+      background: var(--sight-light); color: var(--sightseeing);
+      margin-left: 0.375rem; vertical-align: middle;
+    }
+
+    .prices-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.375rem;
+    }
+    .price-row {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 0.5rem; padding: 0.5rem 0.75rem; font-size: 0.8rem;
+    }
+    .price-row .who  { font-weight: 600; margin-bottom: 0.1rem; }
+    .price-row .cost { color: var(--primary); font-weight: 700; }
+
+    .hours-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.375rem;
+    }
+    .hours-row {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 0.5rem; padding: 0.5rem 0.75rem; font-size: 0.8rem;
+    }
+    .hours-row .day  { font-weight: 600; margin-bottom: 0.1rem; }
+    .hours-row .time { color: var(--muted); }
+
+    footer {
+      text-align: center; font-size: 0.75rem; color: var(--muted);
+      padding: 1rem 1.25rem 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-tag">📍 Забележителност · Билбао</div>
+    <h1>Музей Гугенхайм Билбао ⭐⭐</h1>
+    <p>14 юни 2026 · ~2–2.5 ч · Аудио гид включен</p>
+  </div>
+</header>
+
+<a class="back-btn" href="javascript:history.back()">← Назад</a>
+
+<div class="content">
+
+  <a class="cta-btn" href="https://tickets.guggenheim-bilbao.eus/en/369-tickets/2940-general-admission" target="_blank" rel="noopener">
+    🎟 Купи билет онлайн — General Admission ↗
+  </a>
+
+  <a class="source-link" href="https://www.guggenheim-bilbao.eus/en/plan-your-visit" target="_blank" rel="noopener">
+    <span>Официален сайт: guggenheim-bilbao.eus</span>
+    <span>↗</span>
+  </a>
+
+  <div class="info-box">
+    <strong>Накратко</strong>
+    Един от най-иконичните музеи в света. Проектиран от Франк Гери, открит 1997 г. Сградата сама по себе си е произведение на изкуството — титаниева обвивка, извити форми. Три етажа съвременно и модерно изкуство. Аудио гид е включен в билета.
+  </div>
+
+  <div class="notice-box">
+    <strong>⚠ Резервирай предварително</strong>
+    В неделя (нашият ден) входът е популярен. Купи билет онлайн за конкретен час.
+  </div>
+
+  <h2>🕐 Работно време</h2>
+  <div class="card">
+    <div class="hours-grid">
+      <div class="hours-row">
+        <div class="day">Вт – Нд</div>
+        <div class="time">10:00 – 19:00</div>
+      </div>
+      <div class="hours-row">
+        <div class="day">Лято (15.06–13.09)</div>
+        <div class="time">10:00 – 20:00</div>
+      </div>
+    </div>
+    <p style="margin-top:0.625rem; font-size:0.775rem; color:var(--muted)">Понеделник — затворено (с изключения). Каса затваря 30 мин преди края. 14 юни е неделя → 10:00–19:00.</p>
+  </div>
+
+  <h2>🎫 Цени</h2>
+  <div class="card">
+    <div class="prices-grid">
+      <div class="price-row">
+        <div class="who">Възрастни</div>
+        <div class="cost">€18</div>
+      </div>
+      <div class="price-row">
+        <div class="who">Студенти 18–26</div>
+        <div class="cost">€9</div>
+      </div>
+      <div class="price-row">
+        <div class="who">65+ / Пенсионери</div>
+        <div class="cost">€9</div>
+      </div>
+      <div class="price-row">
+        <div class="who">До 18 години</div>
+        <div class="cost">Безплатно</div>
+      </div>
+    </div>
+    <p style="margin-top:0.625rem; font-size:0.775rem; color:var(--muted)">Аудио гид е включен в цената.</p>
+  </div>
+
+  <h2>🎨 Задължително да видиш</h2>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🕷</div>
+    <div>
+      <h3>Maman — Луиз Буржоа <span class="badge">1999</span></h3>
+      <p>Огромна бронзова паячица (~9 м) пред музея. Символ на майчинството и защитата. Безплатно отвън.</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🌷</div>
+    <div>
+      <h3>Puppy — Джеф Кунс <span class="badge">1992</span></h3>
+      <p>12-метрово кученце от живи цветя (~38 000 растения). Пред главния вход. Безплатно отвън.</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🔴</div>
+    <div>
+      <h3>The Matter of Time — Ричард Сера <span class="badge">1994–2005</span></h3>
+      <p>8 масивни стоманени скулптури в залата на терен. Разходката между тях е уникално пространствено преживяване. Вътре в музея.</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🪞</div>
+    <div>
+      <h3>Infinity Mirrored Room — Яйои Кусама <span class="badge">2020</span></h3>
+      <p>Зала от безкрайни огледала и светлини. Едно от най-снимваните произведения в музея.</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🏛</div>
+    <div>
+      <h3>Самата сграда — Франк Гери <span class="badge">1997</span></h3>
+      <p>Титаниева обвивка, извити форми, отражения в реката. Гледката от моста Пуенте де ла Салве е емблематична. Разгледай и отвън преди да влезеш.</p>
+    </div>
+  </div>
+
+  <h2>📍 Как да стигнем</h2>
+  <div class="card card-row">
+    <div class="card-icon icon-loc">🗺</div>
+    <div>
+      <h3>Avenida Abandoibarra 2, Bilbao</h3>
+      <p>GPS: 43.2675, -2.9422 · Музеят няма собствен паркинг. В неделя синята зона е безплатна — паркирай по улиците около Abandoibarra.</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-loc">🅿</div>
+    <div>
+      <h3>Подземен паркинг — Plaza Pío Baroja</h3>
+      <p>GPS: 43.2630, -2.9350 · ~€2/час. По-сигурен вариант ако предпочиташ закрит паркинг.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>Сантандер 2026 · Само за лична употреба</footer>
+
+</body>
+</html>
