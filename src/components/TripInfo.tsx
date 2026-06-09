@@ -46,6 +46,7 @@ const TripInfo = () => {
           { icon: Plane,    label: 'Самолет',          value: tripSummary.totalFlight, className: 'category-transport' },
           { icon: Car,      label: 'Кола под наем',    value: tripSummary.totalCar,    className: 'category-car' },
           { icon: Car,      label: 'Гориво (~750 км)', value: tripSummary.totalFuel,   className: 'category-transport' },
+          { icon: Car,      label: 'Магистрали (AP-8)', value: tripSummary.totalTolls,  className: 'category-transport' },
           { icon: Ticket,   label: 'Входове',          value: tripSummary.totalEntry,  className: 'category-sightseeing' },
           { icon: Utensils, label: 'Храна',            value: tripSummary.totalFood,   className: 'category-food' },
           { icon: Hotel,    label: 'Нощувки (3)',      value: tripSummary.totalHotel,  className: 'category-hotel' },

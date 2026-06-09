@@ -15,7 +15,7 @@ const Index = () => {
   const [selectedDay, setSelectedDay] = useState(0);
   const [activeTab, setActiveTab] = useState<TabId>('schedule');
   const [focusedMarker, setFocusedMarker] = useState<Activity | null>(null);
-  const { data: weatherData } = useWeather();
+  const { data: weatherData, daily } = useWeather();
 
   const currentDay = tripDays[selectedDay] ?? tripDays[0];
 
@@ -48,7 +48,7 @@ const Index = () => {
         <AnimatePresence mode="wait">
           {activeTab === 'schedule' && (
             <motion.div key="schedule" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-4">
-              <DayHeader day={currentDay} />
+              <DayHeader day={currentDay} weatherData={weatherData} daily={daily} />
               <div className="px-4">
                 <ActivityTimeline activities={currentDay.activities} onActivityClick={handleActivityClick} date={currentDay.date} weatherData={weatherData} />
               </div>

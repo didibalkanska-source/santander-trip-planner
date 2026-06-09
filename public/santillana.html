@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сантиляна дел Мар — Какво да видим</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:       hsl(16, 85%, 50%);
+      --primary-light: hsl(16, 85%, 96%);
+      --primary-dark:  hsl(16, 85%, 40%);
+      --accent:        hsl(200, 80%, 45%);
+      --accent-light:  hsl(200, 60%, 95%);
+      --sightseeing:   hsl(130, 50%, 40%);
+      --sight-light:   hsl(130, 40%, 95%);
+      --bg:            hsl(0, 0%, 98%);
+      --card:          hsl(0, 0%, 100%);
+      --border:        hsl(220, 13%, 91%);
+      --text:          hsl(220, 15%, 15%);
+      --muted:         hsl(220, 10%, 46%);
+      --radius:        0.75rem;
+      --shadow:        0 1px 3px hsl(220 15% 15% / 0.06), 0 1px 2px hsl(220 15% 15% / 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      padding: 1.5rem 1.25rem 1.25rem;
+    }
+    .header-inner { max-width: 680px; margin: 0 auto; }
+    .header-tag {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(255,255,255,.2); border-radius: 2rem;
+      padding: 0.2rem 0.6rem; margin-bottom: 0.625rem;
+    }
+    header h1 { font-size: 1.375rem; font-weight: 700; margin-bottom: 0.25rem; }
+    header p  { font-size: 0.8125rem; opacity: 0.85; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      margin: 1rem 1.25rem 0;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--primary); text-decoration: none;
+      background: var(--card); border: 1px solid var(--border);
+      padding: 0.35rem 0.875rem; border-radius: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .back-btn:hover { background: var(--primary-light); }
+
+    .content { max-width: 680px; margin: 0 auto; padding: 1.25rem 1.25rem 3rem; }
+
+    .source-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.625rem 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.8rem; color: var(--accent);
+      text-decoration: none; box-shadow: var(--shadow);
+    }
+    .source-link:hover { background: var(--accent-light); }
+    .source-link span:first-child { flex: 1; }
+
+    .info-box {
+      background: var(--primary-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.875rem;
+      font-size: 0.8375rem;
+    }
+    .info-box strong { display: block; color: var(--primary-dark); margin-bottom: 0.2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .notice-box {
+      background: hsl(48, 100%, 97%);
+      border-left: 3px solid hsl(38, 92%, 50%);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.875rem;
+      font-size: 0.8375rem;
+      color: hsl(38, 60%, 25%);
+    }
+    .notice-box strong { display: block; margin-bottom: 0.2rem; }
+
+    h2 {
+      font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.07em; color: var(--muted);
+      margin: 1.5rem 0 0.625rem;
+      padding-bottom: 0.375rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 0.875rem 1rem;
+      margin-bottom: 0.625rem;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .card p   { font-size: 0.8375rem; color: hsl(220, 10%, 35%); }
+
+    .badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      padding: 0.15rem 0.5rem; border-radius: 2rem;
+      background: var(--sight-light); color: var(--sightseeing);
+      margin-left: 0.375rem; vertical-align: middle;
+    }
+
+    .card-row { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .card-icon {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+    .icon-sight { background: var(--sight-light); }
+    .icon-info  { background: var(--primary-light); }
+    .icon-loc   { background: hsl(200, 60%, 95%); }
+
+    .route-list { list-style: none; padding: 0; margin-top: 0.5rem; }
+    .route-list li {
+      display: flex; gap: 0.5rem; align-items: flex-start;
+      padding: 0.35rem 0; border-bottom: 1px solid var(--border);
+      font-size: 0.8375rem; color: hsl(220, 10%, 35%);
+    }
+    .route-list li:last-child { border-bottom: none; }
+    .route-list li::before { content: '→'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+
+    footer {
+      text-align: center; font-size: 0.75rem; color: var(--muted);
+      padding: 1rem 1.25rem 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-tag">🚶 Разходка · Кантабрия</div>
+    <h1>Сантиляна дел Мар</h1>
+    <p>Средновековният бисер на Кантабрия · 13 юни 2026</p>
+  </div>
+</header>
+
+<a class="back-btn" href="javascript:history.back()">← Назад</a>
+
+<div class="content">
+
+  <a class="source-link" href="https://www.santillana-del-mar.com/es/informacion/que-visitar-en-santillana-del-mar/6" target="_blank" rel="noopener">
+    <span>Официален сайт: santillana-del-mar.com</span>
+    <span>↗</span>
+  </a>
+
+  <div class="info-box">
+    <strong>Накратко</strong>
+    Средновековно градче на ~30 км западно от Сантандер. Наричат я „живият музей" — цялото историческо ядро е запазено непокътнато от XIV–XVIII в. Разходката е пешеходна.
+  </div>
+
+  <div class="notice-box">
+    <strong>⚠ Колегиатата затваря 13:00–16:00</strong>
+    Влизаме след 16:00. Преди това разглеждаме градчето.
+  </div>
+
+  <h2>🗺 Маршрут</h2>
+  <div class="card">
+    <p>Входната точка е <strong>улица Санто Доминго</strong>, която се разклонява на две:</p>
+    <ul class="route-list">
+      <li><strong>Хуан Инфанте</strong> → води към <strong>Площад Рамон Пелайо</strong> (главният площад)</li>
+      <li>Продължение → към <strong>Колегиатата</strong> и клоастъра</li>
+    </ul>
+  </div>
+
+  <h2>🏛 Забележителности</h2>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">⛪</div>
+    <div>
+      <h3>Колегиата „Санта Хулиана" ⭐ <span class="badge">XII век</span></h3>
+      <p>Най-важният романски паметник в Кантабрия. Три кораба и внушителна цилиндрична кула. Клоастърът е шедьовър — всеки капител е уникален. Мощите на светицата Хулиана се пазят тук. <strong>€3/човек.</strong></p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🏰</div>
+    <div>
+      <h3>Казона де лос Барреда-Брачо <span class="badge">XVIII век</span></h3>
+      <p>Днес е <strong>Parador Gil Blas</strong> — луксозен исторически хотел на площада. Характерна кантабрийска барокова архитектура.</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🗼</div>
+    <div>
+      <h3>Торе де Дон Борха <span class="badge">края на XIV век</span></h3>
+      <p>Отбранителна кула, типична за средновековната аристократична архитектура на региона.</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🗼</div>
+    <div>
+      <h3>Торе дел Мерино <span class="badge">XIV век · най-старото</span></h3>
+      <p>Най-старата постройка в градчето. Служила за резиденция на кралския представител (merino).</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🏛</div>
+    <div>
+      <h3>Каса готика на Леонор де ла Вега <span class="badge">XV век</span></h3>
+      <p>Готическа фасада. Леонор де ла Вега е майка на поета Хорхе Манрике.</p>
+    </div>
+  </div>
+
+  <div class="card card-row">
+    <div class="card-icon icon-sight">🗿</div>
+    <div>
+      <h3>„Каса де лос Омбронес"</h3>
+      <p>Кръстена на грубоватите мъжки фигури (hombrones), издялани на фасадата. Един от най-снимваните фасади в Сантиляна.</p>
+    </div>
+  </div>
+
+  <h2>🦌 Алтамира (наблизо)</h2>
+  <div class="card card-row">
+    <div class="card-icon icon-info">🖼</div>
+    <div>
+      <h3>Музей Алтамира — Неокуева <span class="badge">2 км</span></h3>
+      <p>Открита 1879 г. UNESCO обект. Оригиналната пещера е затворена — посещава се пълноразмерният репликат 1:1 на 14 000-годишните рисунки. ~90 мин. <strong>€3/човек.</strong></p>
+    </div>
+  </div>
+
+  <h2>📍 Паркиране</h2>
+  <div class="card card-row">
+    <div class="card-icon icon-loc">🅿</div>
+    <div>
+      <h3>Calle Castío — безплатно ⭐</h3>
+      <p>GPS: 43.3863, -4.1019 · Чакъл, голям паркинг, 5 мин пеша до центъра.<br>Алтернатива: частен паркинг при входа ~€4/ден.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>Сантандер 2026 · Само за лична употреба</footer>
+
+</body>
+</html>

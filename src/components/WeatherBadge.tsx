@@ -1,16 +1,38 @@
-import { Cloud } from 'lucide-react';
+import { DailyWeatherData, wmoIcon, wmoLabel } from '@/hooks/useWeather';
 
-const WeatherBadge = () => {
+interface WeatherBadgeProps {
+  date?: string;
+  daily?: DailyWeatherData;
+}
+
+const WeatherBadge = ({ date, daily }: WeatherBadgeProps) => {
+  const wx = date && daily ? daily[date] : null;
+
+  if (wx) {
+    return (
+      <a
+        href="https://www.windy.com/?43.463,-3.810,10"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-medium hover:bg-sky-100 transition-colors"
+        aria-label="Прогноза за времето — Windy.com"
+      >
+        <span>{wmoIcon(wx.code)}</span>
+        <span>{wmoLabel(wx.code)}</span>
+        <span className="text-sky-500">·</span>
+        <span>{wx.min}°–{wx.max}°C</span>
+      </a>
+    );
+  }
+
   return (
     <a
       href="https://www.windy.com/?43.463,-3.810,10"
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-medium hover:bg-accent/20 transition-colors"
-      aria-label="Прогноза за времето в Сантандер — Windy.com"
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-600 text-xs font-medium hover:bg-sky-100 transition-colors"
     >
-      <Cloud className="w-3.5 h-3.5" />
-      Прогноза — Windy
+      🌡 Прогноза
     </a>
   );
 };

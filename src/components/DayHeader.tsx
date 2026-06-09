@@ -2,12 +2,15 @@ import { motion } from 'framer-motion';
 import { TripDay, tripDays, tripSummary } from '@/data/tripData';
 import { Calendar, Hotel, ExternalLink, AlertTriangle } from 'lucide-react';
 import WeatherBadge from './WeatherBadge';
+import { WeatherData, DailyWeatherData } from '@/hooks/useWeather';
 
 interface DayHeaderProps {
   day: TripDay;
+  weatherData?: WeatherData;
+  daily?: DailyWeatherData;
 }
 
-const DayHeader = ({ day }: DayHeaderProps) => {
+const DayHeader = ({ day, weatherData, daily }: DayHeaderProps) => {
   const isFirstDay = day.day === 0;
   const isLastDay = day.day === tripDays.length - 1;
   const showHotel = isFirstDay || isLastDay;
@@ -27,7 +30,7 @@ const DayHeader = ({ day }: DayHeaderProps) => {
           <span className="flex items-center gap-1">
             <Calendar className="w-3.5 h-3.5" /> {day.dateFormatted} ({day.dayName})
           </span>
-          <WeatherBadge />
+          <WeatherBadge date={day.date} daily={daily} />
         </div>
         {day.subtitle && (
           <p className="text-sm text-muted-foreground mt-1 italic">{day.subtitle}</p>

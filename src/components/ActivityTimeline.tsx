@@ -105,7 +105,7 @@ const ActivityTimeline = ({ activities, onActivityClick, date, weatherData }: Ac
                 {activity.link && (
                   <a
                     href={activity.link}
-                    target="_blank"
+                    target={activity.link.startsWith('/') ? '_self' : '_blank'}
                     rel="noopener noreferrer"
                     className="text-accent hover:underline flex-shrink-0 mt-0.5"
                     onClick={(e) => e.stopPropagation()}
